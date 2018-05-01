@@ -1,0 +1,32 @@
+#App info
+info:
+  app:
+    name: myRetailService
+    description: MyRetail service to retrieve and product details
+    version: 1.0
+
+# Application Port
+server: 
+  port: 8080
+  context-path: /myretail
+
+# Mongo Db configuration
+spring: 
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: productdb
+
+mongo:
+  db:
+    url: localhost
+    name: productdb
+    
+product:
+  external:
+    endpoint: https://redsky.target.com    
+    
+management:
+  security:
+    enabled: false
