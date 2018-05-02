@@ -62,7 +62,7 @@ http://localhost:8080/myretail/swagger-ui.html
 
 # Calling myretail api services
 
-Performing GET request on http://localhost:8080/myretail/products/13860428 will return json object with product information and pricing information.
+1. Performing GET request on http://localhost:8080/myretail/products/13860428 will return json object with product information and pricing information.
 
 GET http://localhost:8080/myretail/products/13860428
 
@@ -78,7 +78,7 @@ Response:-
 }
 
 
-To perform PUT operation, send JSON object with updated price in request body, it will be updated in the DB.
+2. To perform PUT operation, send JSON object with updated price in request body, it will be updated in the DB.
 
 PUT http://localhost:8080/myretail/products/13860428
 
@@ -94,9 +94,10 @@ Request Body:-
 }
 
 
+3. To get all the products, use below resource.
 
+GET http://localhost:8080/myretail/products
 
-
-
+Response:- Returns all the products available in DB in JSON format
 
 
