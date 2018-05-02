@@ -62,12 +62,14 @@ public class ProductService {
     private String getProductTitle(String productId) throws JsonParseException, JsonMappingException, IOException {
         final Map<String, Map> productInfo = interactHttpClient.getProductInfoFromRemote(productId);
 
-        final Map<String, Map> productMap = productInfo.get("product");
-        final Map<String, Map> itemMap = productMap.get("item");
-        final Map<String, String> productDescriptionMap = itemMap.get("product_description");
+        if (!productInfo.isEmpty()) {
+            final Map<String, Map> productMap = productInfo.get("product");
+            final Map<String, Map> itemMap = productMap.get("item");
+            final Map<String, String> productDescriptionMap = itemMap.get("product_description");
 
-        return productDescriptionMap.get("title");
-
+            return productDescriptionMap.get("title");
+        }
+        return null;
     }
 
     public List<Product> getAllProducts() {
