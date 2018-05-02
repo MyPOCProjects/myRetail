@@ -26,8 +26,7 @@ public class MongoConfig {
         mongo.setBindIp(mongoDbUrl);
 
         final MongoClient mongoClient = mongo.getObject();
-        final MongoTemplate mongoTemplate = new MongoTemplate(mongoClient, mongoDbName);
-        return mongoTemplate;
+        return new MongoTemplate(mongoClient, mongoDbName);
     }
 
 }

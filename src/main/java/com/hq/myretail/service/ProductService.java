@@ -10,8 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.hq.myretail.entity.Product;
 import com.hq.myretail.exception.ProductNotFoundException;
 import com.hq.myretail.helper.ProductHelper;
@@ -59,7 +57,7 @@ public class ProductService {
     }
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    private String getProductTitle(String productId) throws JsonParseException, JsonMappingException, IOException {
+    private String getProductTitle(String productId) throws IOException {
         final Map<String, Map> productInfo = interactHttpClient.getProductInfoFromRemote(productId);
 
         if (!productInfo.isEmpty()) {

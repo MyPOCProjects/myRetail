@@ -14,8 +14,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hq.myretail.exception.ProductNotFoundException;
 import com.hq.myretail.exception.ServiceException;
@@ -35,8 +33,7 @@ public class InteractHttpClient {
     private static final String PRODUCT_URI = "/v2/pdp/tcin/";
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
-    public Map<String, Map> getProductInfoFromRemote(String productId)
-            throws JsonParseException, JsonMappingException, IOException {
+    public Map<String, Map> getProductInfoFromRemote(String productId) throws IOException {
         logger.info(" In InteractHttpClient.getProductInfoFromRemote() : {}", productId);
         final ObjectMapper mapper = new ObjectMapper();
 
@@ -58,9 +55,6 @@ public class InteractHttpClient {
             logger.error("Invalid response from external endpoint : {}", response.getBody());
             throw new ServiceException("Invalid response from external endpoint");
         }
-        final Map<String, Map> productInfo = mapper.readValue(response.getBody(), Map.class);
-
-        return productInfo;
-
+        return mapper.readValue(response.getBody(), Map.class);
     }
 }

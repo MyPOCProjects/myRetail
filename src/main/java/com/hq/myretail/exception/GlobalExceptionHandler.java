@@ -49,7 +49,6 @@ public class GlobalExceptionHandler {
         ExceptionResponse exceptionResponse = null;
 
         try {
-            // final String traceId = null != null != MDC.get("X-B3-TraceId") ? (String) MDC.get("X-B3-TraceId") : "";
             exceptionResponse = new ExceptionResponse(
                     new Date(),
                     httpStatus.value(),

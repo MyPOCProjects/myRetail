@@ -27,6 +27,7 @@ public class DataInitializationService {
      * Default constructor
      */
     public DataInitializationService() {
+        // This is a default constructor
     }
 
     @PostConstruct
